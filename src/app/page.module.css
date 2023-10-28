@@ -227,3 +227,19 @@
     transform: rotate(0deg);
   }
 }
+
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Centra verticalmente en la ventana completa */
+}
+
+.centered-form {
+  background-color: #fff; /* Color de fondo del cuadro */
+  padding: 20px; /* Espacio interior del cuadro */
+  border: 1px solid #ccc; /* Borde del cuadro */
+  border-radius: 5px; /* Borde redondeado del cuadro */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra del cuadro */
+  text-align: center; /* Centra el contenido del cuadro */
+}

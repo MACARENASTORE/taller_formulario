@@ -1,95 +1,104 @@
+"use client"
 import Image from 'next/image'
 import styles from './page.module.css'
 
-export default function Home() {
+import React, { useState } from 'react';
+
+const VeterinaryRegistrationForm: React.FC = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    petName: '',
+    petType: '',
+    appointmentDate: '',
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="centered-container">
+      <div className="centered-form">
+      <h2>Registro en la Clínica Veterinaria</h2>
+      <form>
+        <div className="form-group">
+          <label>Nombre del Dueño:</label>
+          <input
+            type="text"
+            className="form-control"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+          />
         </div>
+        <div className="form-group">
+          <label>Correo Electrónico:</label>
+          <input
+            type="email"
+            className="form-control"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group">
+          <label>Teléfono de Contacto:</label>
+          <input
+            type="tel"
+            className="form-control"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group">
+          <label>Nombre de la Mascota:</label>
+          <input
+            type="text"
+            className="form-control"
+            name="petName"
+            value={formData.petName}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group">
+          <label>Tipo de Mascota:</label>
+          <select
+            className="form-control"
+            name="petType"
+            value={formData.petType}
+            onChange={handleChange}
+          >
+            <option value="">Seleccionar tipo</option>
+            <option value="Perro">Perro</option>
+            <option value="Gato">Gato</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+        <div className="form-group">
+          <label>Fecha de la Cita:</label>
+          <input
+            type="date"
+            className="form-control"
+            name="appointmentDate"
+            value={formData.appointmentDate}
+            onChange={handleChange}
+          />
+        </div>
+      </form>
+      <h3>Resumen de los Datos:</h3>
+      <p>Nombre del Dueño: {formData.name}</p>
+      <p>Correo Electrónico: {formData.email}</p>
+      <p>Teléfono de Contacto: {formData.phone}</p>
+      <p>Nombre de la Mascota: {formData.petName}</p>
+      <p>Tipo de Mascota: {formData.petType}</p>
+      <p>Fecha de la Cita: {formData.appointmentDate}</p>
       </div>
+    </div>
+  );
+};
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
-}
+export default VeterinaryRegistrationForm;
